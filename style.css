@@ -23,3 +23,7 @@ body{
     padding-top: 8px;
 }
 
+.quiz-answer-card:hover{
+    cursor: pointer;
+    background-color: var(--bs-primary-border-subtle);
+}
