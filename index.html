@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuizApp</title>
 
-    <link rel="icon" type="image/x-icon" href="assets/img/trophy.png">
+    <link rel="icon" type="image/x-icon" href="assets/img/trophy.png" />
 
     <link
       rel="stylesheet"
@@ -73,58 +73,74 @@
 
     <div class="container">
       <div class="card quiz-card">
-        <img src="./assets/img/quizlogo.jpg" id="header-img" class="card-img-top" />
+        <img
+          src="./assets/img/quizlogo.jpg"
+          id="header-img"
+          class="card-img-top"
+        />
 
-        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuemin="0" aria-valuemax="100">
+        <div
+          class="progress"
+          role="progressbar"
+          aria-label="Example with label"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
           <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
         </div>
 
-        <div class="card-body" id="endScreen" style="display: none;">
-          <div class="text-center final-headline">Quiz beendet!
-          </div>
+        <div class="card-body" id="endScreen" style="display: none">
+          <div class="text-center final-headline">Quiz beendet!</div>
 
           <div class="text-center">
-            Du hast <b id="amount-of-right-questions"></b> Frage(n) von <b id="amount-of-questions"></b> richtig beantwortet.
+            Du hast <b id="amount-of-right-questions"></b> Frage(n) von
+            <b id="amount-of-questions"></b> richtig beantwortet.
           </div>
 
-
           <div class="button-row">
-          <button onclick="restartGame()" type="button" class="btn btn-primary">Erneut spielen</button>
-        </div>
-
-
+            <button
+              onclick="restartGame()"
+              type="button"
+              class="btn btn-primary"
+            >
+              Erneut spielen
+            </button>
+          </div>
         </div>
 
         <div class="card-body" id="questionBody">
           <h5 class="card-title text-center" id="questionText">Frage</h5>
 
           <div class="card mb-2 quiz-answer-card" onclick="answer('answer_1')">
-            <div class="card-body" id="answer_1">
-              
-            </div>
+            <div class="card-body" id="answer_1"></div>
           </div>
 
           <div class="card mb-2 quiz-answer-card" onclick="answer('answer_2')">
-            <div class="card-body" id="answer_2">
-              
-            </div>
+            <div class="card-body" id="answer_2"></div>
           </div>
 
           <div class="card mb-2 quiz-answer-card" onclick="answer('answer_3')">
-            <div class="card-body" id="answer_3">
-              
-            </div>
+            <div class="card-body" id="answer_3"></div>
           </div>
 
           <div class="card mb-2 quiz-answer-card" onclick="answer('answer_4')">
-            <div class="card-body" id="answer_4">
-              
-            </div>
+            <div class="card-body" id="answer_4"></div>
           </div>
 
           <div class="question-footer">
-            <span> <b id="current-question"></b> von <b id="all-questions"></b> Fragen </span>
-            <button onclick="nextQuestion()" id="next-button" type="button" class="btn btn-primary" disabled>nächste Frage</button>
+            <span>
+              <b id="current-question"></b> von
+              <b id="all-questions"></b> Fragen
+            </span>
+            <button
+              onclick="nextQuestion()"
+              id="next-button"
+              type="button"
+              class="btn btn-primary"
+              disabled
+            >
+              nächste Frage
+            </button>
           </div>
         </div>
       </div>

@@ -73,40 +73,50 @@ function init() {
   showQuestion();
 }
 
-function showQuestion() {
-  if (currentQuestion >= questions.length) {
-    // Show End Screen
-    document.getElementById("endScreen").style = "";
-    document.getElementById("questionBody").style = "display:none";
-    document.getElementById("amount-of-questions").innerHTML = questions.length;
-    document.getElementById("amount-of-right-questions").innerHTML =
-      rightQuestions;
-    document.getElementById("header-img").src = "/assets/img/trophy.png";
-    AUDIO_COMPLETE.play();
+function showQuestion(){
+  if (gameIsOver()){
+    showEndScreen();
   } else {
-    //Show question
-    let percent = Math.round(((currentQuestion + 1) / questions.length) * 100);
-    document.getElementById("progress-bar").innerHTML = `${percent} %`;
-    document.getElementById("progress-bar").style = `width: ${percent}%`;
-
-    let question = questions[currentQuestion];
-    document.getElementById("questionText").innerHTML = question["question"];
-    document.getElementById("answer_1").innerHTML = question["answer_1"];
-    document.getElementById("answer_2").innerHTML = question["answer_2"];
-    document.getElementById("answer_3").innerHTML = question["answer_3"];
-    document.getElementById("answer_4").innerHTML = question["answer_4"];
-    document.getElementById("current-question").innerHTML = `${
-      currentQuestion + 1
-    }`;
+    updateProgressBar();
+    updateToNextQuestion();
   }
 }
 
-function answer(selection) {
+function gameIsOver(){
+ return currentQuestion >= questions.length;
+}
+
+function showEndScreen(){
+  document.getElementById("endScreen").style = "";
+  document.getElementById("questionBody").style = "display:none";
+  document.getElementById("amount-of-questions").innerHTML = questions.length;
+  document.getElementById("amount-of-right-questions").innerHTML =
+    rightQuestions;
+  document.getElementById("header-img").src = "/assets/img/trophy.png";
+  AUDIO_COMPLETE.play();
+}
+
+function updateProgressBar(){
+  let percent = Math.round(((currentQuestion + 1) / questions.length) * 100);
+  document.getElementById("progress-bar").innerHTML = `${percent} %`;
+  document.getElementById("progress-bar").style = `width: ${percent}%`;
+}
+
+function updateToNextQuestion(){
+  let question = questions[currentQuestion];
+  document.getElementById("questionText").innerHTML = question["question"];
+  document.getElementById("answer_1").innerHTML = question["answer_1"];
+  document.getElementById("answer_2").innerHTML = question["answer_2"];
+  document.getElementById("answer_3").innerHTML = question["answer_3"];
+  document.getElementById("answer_4").innerHTML = question["answer_4"];
+  document.getElementById("current-question").innerHTML = `${currentQuestion + 1}`;
+}
+
+function answer(selection){
   let question = questions[currentQuestion];
   let selectedQuestionNumber = selection.slice(-1);
   let idOfRightAnswer = `answer_${question["right_answer"]}`;
-  if (selectedQuestionNumber == question["right_answer"]) {
-    //richtige Frage beantwortet
+  if (rightAnswerSelected(selectedQuestionNumber)) {
     document.getElementById(selection).parentNode.classList.add("bg-success"); // durch parentNode wird es dem übergeordneten div zugeordnet
     AUDIO_SUCCES.play();
     rightQuestions++;
@@ -118,6 +128,11 @@ function answer(selection) {
     AUDIO_FAIL.play();
   }
   document.getElementById("next-button").disabled = false;
+}
+
+function rightAnswerSelected(selectedQuestionNumber){
+  let question = questions[currentQuestion];
+  return selectedQuestionNumber == question["right_answer"];
 }
 
 function nextQuestion() {
