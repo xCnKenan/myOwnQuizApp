@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuizApp</title>
 
+    <link rel="icon" type="image/x-icon" href="assets/img/trophy.png">
+
     <link
       rel="stylesheet"
       href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -71,19 +73,26 @@
 
     <div class="container">
       <div class="card quiz-card">
-        <img src="./assets/img/quizlogo.jpg" class="card-img-top" />
+        <img src="./assets/img/quizlogo.jpg" id="header-img" class="card-img-top" />
+
+        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+        </div>
 
         <div class="card-body" id="endScreen" style="display: none;">
-          <div class="text-center">Quiz beendet!
-          </div>
-
-          <div>
-            <img class="width-100" src="/assets/img/trophy.png">
+          <div class="text-center final-headline">Quiz beendet!
           </div>
 
           <div class="text-center">
             Du hast <b id="amount-of-right-questions"></b> Frage(n) von <b id="amount-of-questions"></b> richtig beantwortet.
           </div>
+
+
+          <div class="button-row">
+          <button onclick="restartGame()" type="button" class="btn btn-primary">Erneut spielen</button>
+        </div>
+
+
         </div>
 
         <div class="card-body" id="questionBody">
