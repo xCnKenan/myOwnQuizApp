@@ -72,7 +72,21 @@
     <div class="container">
       <div class="card quiz-card">
         <img src="./assets/img/quizlogo.jpg" class="card-img-top" />
-        <div class="card-body">
+
+        <div class="card-body" id="endScreen" style="display: none;">
+          <div class="text-center">Quiz beendet!
+          </div>
+
+          <div>
+            <img class="width-100" src="/assets/img/trophy.png">
+          </div>
+
+          <div class="text-center">
+            Du hast <b id="amount-of-right-questions"></b> Frage(n) von <b id="amount-of-questions"></b> richtig beantwortet.
+          </div>
+        </div>
+
+        <div class="card-body" id="questionBody">
           <h5 class="card-title text-center" id="questionText">Frage</h5>
 
           <div class="card mb-2 quiz-answer-card" onclick="answer('answer_1')">

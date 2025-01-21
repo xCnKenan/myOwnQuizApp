@@ -63,6 +63,7 @@ let questions = [
 ];
 
 let currentQuestion = 0;
+let rightQuestions = 0;
 
 function init() {
   document.getElementById("all-questions").innerHTML = questions.length;
@@ -70,6 +71,14 @@ function init() {
 }
 
 function showQuestion() {
+
+if(currentQuestion >= questions.length){
+    // TODO: Show End Screen
+    document.getElementById('endScreen').style='';
+    document.getElementById('questionBody').style= 'display:none';
+    document.getElementById('amount-of-questions').innerHTML = questions.length;
+    document.getElementById('amount-of-right-questions').innerHTML = rightQuestions;
+}else {
   let question = questions[currentQuestion];
   document.getElementById("questionText").innerHTML = question["question"];
   document.getElementById("answer_1").innerHTML = question["answer_1"];
@@ -77,14 +86,16 @@ function showQuestion() {
   document.getElementById("answer_3").innerHTML = question["answer_3"];
   document.getElementById("answer_4").innerHTML = question["answer_4"];
   document.getElementById("current-question").innerHTML = `${currentQuestion + 1}`;
+    }
 }
 
 function answer(selection) {
   let question = questions[currentQuestion];
   let selectedQuestionNumber = selection.slice(-1);
   let idOfRightAnswer = `answer_${question["right_answer"]}`;
-  if (selectedQuestionNumber == question["right_answer"]) {
+  if (selectedQuestionNumber == question["right_answer"]) { //richtige Frage beantwortet
     document.getElementById(selection).parentNode.classList.add("bg-success"); // durch parentNode wird es dem übergeordneten div zugeordnet
+    rightQuestions++;
   } else {
     document.getElementById(selection).parentNode.classList.add("bg-danger");
     document.getElementById(idOfRightAnswer).parentNode.classList.add("bg-success");
