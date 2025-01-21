@@ -27,3 +27,7 @@ body{
     cursor: pointer;
     background-color: var(--bs-primary-border-subtle);
 }
+
+.bg-success, .bg-danger{
+    color: white !important;
+}
