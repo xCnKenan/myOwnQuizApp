@@ -117,7 +117,7 @@ function answer(selection){
   let selectedQuestionNumber = selection.slice(-1);
   let idOfRightAnswer = `answer_${question["right_answer"]}`;
   if (rightAnswerSelected(selectedQuestionNumber)) {
-    document.getElementById(selection).parentNode.classList.add("bg-success"); // durch parentNode wird es dem übergeordneten div zugeordnet
+    document.getElementById(selection).parentNode.classList.add("bg-success");
     AUDIO_SUCCES.play();
     rightQuestions++;
   } else {
@@ -155,8 +155,8 @@ function resetAnswers() {
 
 function restartGame() {
   document.getElementById("header-img").src = "/assets/img/quizlogo.jpg";
-  document.getElementById("endScreen").style = "display:none"; // Endscreen ausblenden
-  document.getElementById("questionBody").style = ""; // questionbody wieder anzeigen
+  document.getElementById("endScreen").style = "display:none";
+  document.getElementById("questionBody").style = "";
   currentQuestion = 0;
   rightQuestions = 0;
   init();
